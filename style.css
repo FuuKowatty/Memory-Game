@@ -3,3 +3,48 @@
     margin: 0;
     box-sizing: border-box;
 }
+
+body {
+   background:  linear-gradient(to right, #2C3E50 , #000 );
+   color: white;
+   overflow: hidden;
+   height: 100vh;
+}
+
+header h1 {
+    text-align: center;
+    margin: 20px;
+    font-size: 48px;
+}
+
+main {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.container {
+    display: grid;
+    grid-template: repeat(4, 1fr)/ repeat(4, 1fr);
+    width: 80%;
+    height: 80%;
+    grid-gap: 15px;
+    
+}
+
+.cardSpace {
+    aspect-ratio: 4/5;
+    max-width: 150px;
+    background: white;
+    border-radius: 5px;
+
+}
+
+@media screen and (min-width: 810px) {
+   .container {
+     grid-template: repeat(4, calc(760px/4))/ repeat(4, calc(600px/4));
+     width: 650px;
+   }
+}
