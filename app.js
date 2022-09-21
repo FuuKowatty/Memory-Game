@@ -3,7 +3,7 @@ let result = drawSeq(); //random set of cards
 console.log(result.length)
 for(let i = 0; i<cardContainer.length; i++) {
     let img = document.createElement('img');
-    img.src = cardDeck[result[i]].src;
+    img.src = cardDeck[result[i]].face__src;
     cardContainer[i].appendChild(img);
     cardContainer[i].addEventListener('click', () => {
         img.src = cardDeck[result[i]].src;
