@@ -1,18 +1,22 @@
 const cardContainer = document.querySelectorAll('.cardSpace');
-console.log('length tablicy ' + cardDeck.length)
-let result = drawSeq();
-cardContainer.forEach(e => {
-    let img = document.createElement('img');
+let result = drawSeq(); //random set of cards
+// for(let i = 0; i<cardContainer.length; i++) {
+//     let img = document.createElement('img');
+//     img.src = cardDeck[i].face__src;
+//     cardContainer[i].appendChild(img)
+// }
+console.log(result)
 
 
-})
 
 
 function drawSeq() {
     let arr = [];
-    for(let i = 0; i<cardContainer.length-1; i++) {
+    for(let i = 0; i<cardContainer.length;i++) {
         let random = Math.floor(Math.random() * cardDeck.length );
-        console.log(random)
-
-    }
+        if(!arr.includes(random) ) {
+            arr.push(random, random)
+        }
+        arr.sort(() => .5 - Math.random() );
+    } return arr
 }
