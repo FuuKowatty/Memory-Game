@@ -1,35 +1,43 @@
 const cardContainer = document.querySelectorAll('.cardSpace');
 let result = drawSeq(); //random set of cards
-let prevChose = ['nothing'];
+let prevChose = [];
 let counter = 0;
-
+let v;
 
 for(let i = 0; i<cardContainer.length; i++) { 
+
+
 
     let img = document.createElement('img');
     img.src = cardDeck[result[i]].face__src;
     cardContainer[i].appendChild(img);
-    cardContainer[i].addEventListener('click', () => {
-       
-        counter++
-        img.src = cardDeck[result[i]].src;
-        if(prevChose[0] === cardDeck[result[i]].id && prevChose[1] !== cardContainer[i]) {
-                cardContainer[i].innerHTML = '';
-                prevChose[1].innerHTML = '';
 
-        } else if(counter%2 ===0 && prevChose[1] !== cardContainer[i]) {
-                let container = prevChose[1]
+    cardContainer[i].addEventListener('click', moveCard)
+       
+        function moveCard() {
+        counter++;           
+
+        img.src = cardDeck[result[i]].src;
+        let prevValueContainer = prevChose[1]
+
+        if(prevChose[0] === cardDeck[result[i]].id && prevValueContainer !== cardContainer[i]) {
+            setTimeout(() => {
+                cardContainer[i].innerHTML = ''; //win
+                prevValueContainer.innerHTML = '';
+            }, 500)
+        } else if(counter%2 ===0 && prevValueContainer !== cardContainer[i]) { //lost
+
                 setTimeout(() => {
                     img.src = cardDeck[result[i]].face__src; 
-                    container.firstChild.src = './img/faceSide.png';
-                },1000)
-
-
+                    prevValueContainer.firstChild.src = './img/faceSide.png';
+                },500)
         }
+            prevChose = [cardDeck[result[i]].id, cardContainer[i] ];
 
-            prevChose = [cardDeck[result[i]].id, cardContainer[i] ]
-    })
+    }
+    
 
+    
 }
 
 
